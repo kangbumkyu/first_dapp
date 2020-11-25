@@ -8,24 +8,27 @@ import ast
 
 test_node_uri = "https://bicon.net.solidwallet.io/api/v3"
 local_node_uri = "http://127.0.0.1:9000/api/v3"
+main_node_uri = "https://ctz.solidwallet.io/api/v3"
 network_id = 3
+main_network_id = 1
 
 test_score_address = "cx642310366945d5cfd595fa6f174459e004620b36"
 local_score_address = "cx76d87979cf624ba20eb996b1384e8a8d7f5b6d86"
+main_score_address = "cxa326a0b61115ce524bd90e4e58f40682ea9c83fc"
 # keystore_path = "../bomb_keystore"
 # keystore_pw = "@icon111"
 
 
 
 
-wallet = KeyWallet.load("../iconkeystore", "@icon111")
+wallet = KeyWallet.load("../../iconkeystore", "@icon111")
 wallet_address = wallet.get_address()
 
 # wallet = KeyWallet.load(keystore_path, keystore_pw)
 # tester_addr = wallet.get_address()
 
 # # Creates an IconService instance using the HTTP provider and set a provider.
-icon_service = IconService(HTTPProvider(test_node_uri))
+icon_service = IconService(HTTPProvider(main_node_uri))
 
 # # Gets a block by a given block height.
 # block = icon_service.get_block(1209)
@@ -45,7 +48,7 @@ app = Flask("First Come First Served")
 def home():
     params = {}
     call = CallBuilder().from_(wallet_address) \
-        .to(test_score_address) \
+        .to(main_score_address) \
         .method("get_results") \
         .params(params) \
         .build()
