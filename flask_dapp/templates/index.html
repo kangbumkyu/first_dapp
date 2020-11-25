@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello dApp</title>
+    <style>
+        body {
+            background-color: #F7F9FA;
+        }
+
+        header {
+            display: grid;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 50px;
+            margin-top: 50px;
+        }
+
+        header>h1 {
+            margin: 0 auto;
+        }
+
+        .section__title {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            width: 80%;
+            margin: 0 auto;
+            /* border: 1px solid black; */
+        }
+
+        .row {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            height: 50px;
+            width: 80%;
+            border-radius: 5px;
+            text-decoration: none;
+            color: black;
+            /* margin-top: 20px; */
+            margin: 10px auto;
+            background-color: #ffffff;
+            -webkit-box-shadow: 0px 10px 13px -7px #888888, 5px 5px 19px 0px rgba(201, 201, 201, 0);
+            box-shadow: 0px 10px 13px -7px #888888, 5px 5px 19px 0px rgba(201, 201, 201, 0);
+        }
+
+
+
+        .timestamp,
+        .address {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+        }
+
+        h3 {
+            /* border: 1px solid black; */
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>First Come First Served</h1>
+        <h4>Send transaction to cx642310366945d5cfd595fa6f174459e004620b36 win a prize</h4>
+    </header>
+
+    <section>
+        <div class="section__title">
+            <h3>Timestamp</h3>
+            <h3>Address</h3>
+        </div>
+
+
+
+        <div class="section__content">
+            {% for data in result %}
+            <a class="row" href="https://bicon.tracker.solidwallet.io/transaction/0x{{data['txHash']}}">
+                <div class="timestamp">{{data['timestamp']}}</div>
+                <div class="address">{{data['from']}}</div>
+            </a>
+            {% endfor %}
+        </div>
+    </section>
+
+
+
+</body>
+
+</html>
